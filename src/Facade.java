@@ -24,7 +24,7 @@ public class Facade {
             instance = new Facade();
         return instance;
     }
-//  private Login Login(){return login;}
+    public Login Login(){return login;}
 
     public Map<String, ProductList> getBuyer_ProductList(){ return buyer_ProductList; }
 
@@ -57,7 +57,6 @@ public class Facade {
                         productList.add(new Product(Product_name, Product_type));
                     }
                 }
-
             }
             else break;
         }
@@ -85,11 +84,12 @@ public class Facade {
                             if(!buyer_ProductList.containsKey(Username)){
                                 buyer_ProductList.put(Username, new ProductList());
                             }
-                            if(!buyer_ProductList.get(Username).contains(Product_name))
-                            buyer_ProductList.get(Username).add(product);
+                            if(!buyer_ProductList.get(Username).contains(Product_name)){
+                                buyer_ProductList.get(Username).add(product);
+                            }
                             //System.out.print(buyer_ProductList);
                         }
-                        else {
+                        if(Sellers.containsKey(Username)){
                             if(!seller_ProductList.containsKey(Username)){
                                 seller_ProductList.put(Username, new ProductList());
                             }

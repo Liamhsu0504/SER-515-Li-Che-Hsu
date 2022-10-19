@@ -11,7 +11,6 @@ public class Seller extends Person {
     private  static JButton button;
     @Override
     public void showMenu() throws FileNotFoundException {
-        Facade facade = Facade.getInstance();
         Map<String, ProductList> productList_map = Facade.getInstance().getSeller_ProductList();
         String Username = super.getUsername();
         ProductList productList = productList_map.get(Username);
