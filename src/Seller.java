@@ -1,5 +1,6 @@
 import javax.swing.*;
 import java.io.FileNotFoundException;
+import java.util.Map;
 
 public class Seller extends Person {
 
@@ -11,12 +12,20 @@ public class Seller extends Person {
     @Override
     public void showMenu() throws FileNotFoundException {
         Facade facade = Facade.getInstance();
+        Map<String, ProductList> productList_map = Facade.getInstance().getSeller_ProductList();
         String Username = super.getUsername();
+        ProductList productList = productList_map.get(Username);
         super.theProductMenu.showMenu();
-        userLabel = new JLabel("ProductList");
-        userLabel.setBounds(10,10, 80 ,25);
+        userLabel = new JLabel("Your cart : ");
+        userLabel.setBounds(10,70, 80 ,25);
         this.add(userLabel);
-
+        for(int i = 0; i < productList.size(); i++){
+            Product p = productList.get(i);
+            JLabel item = new JLabel(p.get_name());
+            item.setBounds(10 + (i * 50), 10 , 80, 200);
+            this.add(item);
+            System.out.print(p.get_name() + i);
+        }
 
 
         this.setSize(400, 300);

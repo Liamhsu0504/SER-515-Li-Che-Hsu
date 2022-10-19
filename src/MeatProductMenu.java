@@ -13,18 +13,16 @@ public class MeatProductMenu extends JFrame implements ProductMenu{
     public void showMenu() throws FileNotFoundException {
         productList = Facade.getInstance().getProductList();
         JMenuBar menuBar = new JMenuBar();
-        menuBar.setBounds(10, 10, 60, 30);
+        menuBar.setBounds(10, 10, 150, 30);
         setJMenuBar(menuBar);
-        JMenu menu_meat = new JMenu("Meats");
-        menu_meat.setBounds(10,10, 10, 10);
+        JMenu menu_meat = new JMenu(" Choose_Meats");
+        menu_meat.setBounds(10,10, 150, 10);
         menuBar.add(menu_meat);
         for(int i = 0; i < productList.size(); i++){
             Product p = productList.get(i);
-            System.out.print(p.get_name());
             if(p.get_type().equals("Meat")){
                 JCheckBoxMenuItem item = new JCheckBoxMenuItem(p.get_name());
                 menu_meat.add(item);
-                System.out.print(p.get_name() + i);
             }
         }
         person.add(menuBar);
