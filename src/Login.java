@@ -103,7 +103,6 @@ public class Login extends JFrame implements ActionListener {
             try {
                 Facade.getInstance().attachProductToUser();
                 this.setVisible(false);
-                //person.test();
                 person.showMenu();
 
             } catch (FileNotFoundException ex) {
@@ -114,7 +113,6 @@ public class Login extends JFrame implements ActionListener {
             try {
                 Facade.getInstance().attachProductToUser();
                 this.setVisible(false);
-                //person.test();
                 person.showMenu();
             } catch (FileNotFoundException ex) {
                 throw new RuntimeException(ex);

@@ -1,9 +1,13 @@
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.io.FileNotFoundException;
 
 public class MeatProductMenu extends JFrame implements ProductMenu{
     private ProductList productList;
+    //private JMenuBar menu_bar;
+    //private JMenu menu_meat;
     private static Person person;
     public MeatProductMenu(Person person) {
         this.person = person;
@@ -25,7 +29,24 @@ public class MeatProductMenu extends JFrame implements ProductMenu{
                 menu_meat.add(item);
             }
         }
+        JButton switch_productmenu = new JButton("Switch to Produce Menu");
+        switch_productmenu.setBounds(10,50, 180,20);
+        switch_productmenu.addActionListener(this::actionPerformed);
+        person.add(switch_productmenu);
         person.add(menuBar);
+        System.out.print(menuBar);
+    }
+
+    private void actionPerformed(ActionEvent actionEvent) {
+        try{
+            JMenuBar menubar = person.getJMenuBar();
+            System.out.print(menubar);
+            menubar.setVisible(false);
+            person.theProductMenu = new ProduceProductMenu(person);
+            person.showMenu();
+        }catch (FileNotFoundException ex) {
+            ex.printStackTrace();
+        }
     }
 
     @Override

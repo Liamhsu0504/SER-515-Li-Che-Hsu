@@ -1,4 +1,5 @@
 import javax.swing.*;
+import java.awt.event.ActionEvent;
 import java.io.FileNotFoundException;
 import java.util.Map;
 
@@ -12,24 +13,39 @@ public class Seller extends Person {
     @Override
     public void showMenu() throws FileNotFoundException {
         Map<String, ProductList> productList_map = Facade.getInstance().getSeller_ProductList();
+        JPanel panel = new JPanel();
         String Username = super.getUsername();
         ProductList productList = productList_map.get(Username);
         super.theProductMenu.showMenu();
         userLabel = new JLabel("Your cart : ");
         userLabel.setBounds(10,70, 80 ,25);
         this.add(userLabel);
-        for(int i = 0; i < productList.size(); i++){
-            Product p = productList.get(i);
+        for(int index = 0; index < productList.size(); index++){
+            Product p = productList.get(index);
             JLabel item = new JLabel(p.get_name());
-            item.setBounds(10 + (i * 50), 10 , 80, 200);
+            item.setBounds(10 + (index * 30), 10 , 80, 200);
             this.add(item);
-            System.out.print(p.get_name() + i);
         }
-
+        JButton button_Logout = new JButton("Logout");
+        button_Logout.setBounds(50,90,60,25);
+        button_Logout.addActionListener(this::actionPerformed);
+        panel.add(button_Logout);
 
         this.setSize(400, 300);
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.setVisible(true);
+        this.add(panel);
+    }
+
+    private void actionPerformed(ActionEvent actionEvent) {
+        if (actionEvent.getActionCommand().equals("Logout")) {
+            this.setVisible(false);
+            try {
+                Facade.getInstance().Login().setVisible(true);
+            } catch (FileNotFoundException ex) {
+                ex.printStackTrace();
+            }
+        }
     }
 
     @Override

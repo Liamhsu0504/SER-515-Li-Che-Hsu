@@ -84,18 +84,16 @@ public class Facade {
                             if(!buyer_ProductList.containsKey(Username)){
                                 buyer_ProductList.put(Username, new ProductList());
                             }
-                            if(!buyer_ProductList.get(Username).contains(Product_name)){
+                            if(buyer_ProductList.get(Username).get_name(Product_name) == null){
                                 buyer_ProductList.get(Username).add(product);
                             }
-                            //System.out.print(buyer_ProductList);
                         }
                         if(Sellers.containsKey(Username)){
                             if(!seller_ProductList.containsKey(Username)){
                                 seller_ProductList.put(Username, new ProductList());
                             }
-                            if(!seller_ProductList.get(Username).contains(Product_name))
+                            if(seller_ProductList.get(Username).get_name(Product_name) == null)
                                 seller_ProductList.get(Username).add(product);
-                            //System.out.print(seller_ProductList);
                         }
                     }
                 }
