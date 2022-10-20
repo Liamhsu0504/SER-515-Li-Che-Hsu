@@ -19,20 +19,22 @@ public class Buyer extends Person{
         userLabel = new JLabel("Your cart : ");
         userLabel.setBounds(10,70, 80 ,25);
         this.add(userLabel);
-        if(!productList.isEmpty()){
-            for(int index = 0; index < productList.size(); index++){
-                Product p = productList.get(index);
-                JLabel item = new JLabel(p.get_name());
-                item.setBounds(10 + (index * 30), 10 , 80, 200);
-                this.add(item);
-            }
-        }
+        ReminderVisitor reminderVisitor = new ReminderVisitor();
+        productList.accept(reminderVisitor, panel);
+        this.add(panel);
+        /*for(int index = 0; index < productList.size(); index++){
+            Product p = productList.get(index);
+            JLabel item = new JLabel(p.get_name());
+            item.setBounds(10 + (index * 30), 10 , 80, 200);
+            this.add(item);
+        }*/
         JButton button_Logout = new JButton("Logout");
         button_Logout.setBounds(50,90,60,25);
         button_Logout.addActionListener(this::actionPerformed);
         panel.add(button_Logout);
 
         this.setSize(400, 300);
+        this.setResizable(false);
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.setVisible(true);
         this.add(panel);

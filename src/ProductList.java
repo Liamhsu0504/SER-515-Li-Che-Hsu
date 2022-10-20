@@ -1,3 +1,4 @@
+import javax.swing.*;
 import java.util.ArrayList;
 
 public class ProductList extends ArrayList<Product>{
@@ -11,7 +12,7 @@ public class ProductList extends ArrayList<Product>{
         return null;
     }
 
-    public void accept(NodeVisitor visitor){
-        visitor.visited(this);
+    public void accept(NodeVisitor visitor, JPanel panel){
+        visitor.visited(this, panel);
     }
 }
