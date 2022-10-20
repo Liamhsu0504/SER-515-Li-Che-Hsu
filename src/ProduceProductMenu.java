@@ -1,8 +1,11 @@
 import javax.swing.*;
+import java.awt.event.ActionEvent;
 import java.io.FileNotFoundException;
 
 public class ProduceProductMenu extends  JFrame implements ProductMenu{
     private static Person person;
+    JMenu menu_produce = new JMenu(" Choose_Products");
+    JButton switch_productmenu = new JButton("Switch to Meat Menu");
     private ProductList productList;
     public ProduceProductMenu(Person person) {
         this.person = person;
@@ -13,22 +16,35 @@ public class ProduceProductMenu extends  JFrame implements ProductMenu{
         JMenuBar menuBar = new JMenuBar();
         menuBar.setBounds(10, 10, 150, 30);
         setJMenuBar(menuBar);
-        JMenu menu_meat = new JMenu(" Choose_Products");
-        menu_meat.setVisible(true);
-        menu_meat.setBounds(10,10, 150, 10);
-        menuBar.add(menu_meat);
-        for(int i = 0; i < productList.size(); i++){
-            Product p = productList.get(i);
+        menu_produce.setBounds(10,10, 150, 10);
+        menuBar.add(menu_produce);
+        ProductIterator iterator = new ProductIterator(productList);
+        while(iterator.hasNext()){
+            Product p = iterator.Next();
             if(p.get_type().equals("Produce")){
                 JCheckBoxMenuItem item = new JCheckBoxMenuItem(p.get_name());
-                menu_meat.add(item);
+                menu_produce.add(item);
             }
         }
         person.add(menuBar);
-        JButton switch_productmenu = new JButton("Switch to Meat Menu");
         switch_productmenu.setBounds(10,50, 180,20);
-        //switch_productmenu.addActionListener(this::actionPerformed);
+        switch_productmenu.addActionListener(this::actionPerformed);
+        menu_produce.setVisible(true);
+        switch_productmenu.setVisible(true);
         person.add(switch_productmenu);
+    }
+
+    private void actionPerformed(ActionEvent actionEvent) {
+        try{
+            person.getContentPane().remove(switch_productmenu);
+            menu_produce.setVisible(false);
+            //switch_productmenu.setVisible(false);
+            person.theProductMenu = new MeatProductMenu(person);
+            switch_productmenu.setText("Switch to Meat Menu");
+            person.showMenu();
+        }catch (FileNotFoundException ex) {
+            ex.printStackTrace();
+        }
     }
 
     @Override

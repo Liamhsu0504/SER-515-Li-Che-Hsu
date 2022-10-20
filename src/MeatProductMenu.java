@@ -4,10 +4,11 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.FileNotFoundException;
 
-public class MeatProductMenu extends JFrame implements ProductMenu{
+public class MeatProductMenu extends JFrame implements ProductMenu, ActionListener {
     private ProductList productList;
-    //private JMenuBar menu_bar;
-    //private JMenu menu_meat;
+    JMenuBar menuBar = new JMenuBar();
+    JMenu menu_meat = new JMenu(" Choose_Meats");
+    JButton switch_productmenu = new JButton("Switch to Produce Menu");
     private static Person person;
     public MeatProductMenu(Person person) {
         this.person = person;
@@ -16,39 +17,37 @@ public class MeatProductMenu extends JFrame implements ProductMenu{
     @Override
     public void showMenu() throws FileNotFoundException {
         productList = Facade.getInstance().getProductList();
-        JMenuBar menuBar = new JMenuBar();
         menuBar.setBounds(10, 10, 150, 30);
         setJMenuBar(menuBar);
-        JMenu menu_meat = new JMenu(" Choose_Meats");
         menu_meat.setBounds(10,10, 150, 10);
+        switch_productmenu.setVisible(true);
         menuBar.add(menu_meat);
-        for(int i = 0; i < productList.size(); i++){
-            Product p = productList.get(i);
+
+        ProductIterator iterator = new ProductIterator(productList);
+        while(iterator.hasNext()){
+            Product p = iterator.Next();
             if(p.get_type().equals("Meat")){
                 JCheckBoxMenuItem item = new JCheckBoxMenuItem(p.get_name());
                 menu_meat.add(item);
             }
         }
-        JButton switch_productmenu = new JButton("Switch to Produce Menu");
         switch_productmenu.setBounds(10,50, 180,20);
-        switch_productmenu.addActionListener(this::actionPerformed);
-        person.add(switch_productmenu);
+        switch_productmenu.addActionListener(this);
         person.add(menuBar);
-        System.out.print(menuBar);
+        person.add(switch_productmenu);
     }
 
-    private void actionPerformed(ActionEvent actionEvent) {
+    public void actionPerformed(ActionEvent e) {
         try{
-            JMenuBar menubar = person.getJMenuBar();
-            System.out.print(menubar);
-            menubar.setVisible(false);
+            menu_meat.setVisible(false);
+            switch_productmenu.setVisible(false);
+            switch_productmenu.setText("Switch to Meat Menu");
             person.theProductMenu = new ProduceProductMenu(person);
             person.showMenu();
         }catch (FileNotFoundException ex) {
             ex.printStackTrace();
         }
     }
-
     @Override
     public void showAddButton() {
 
@@ -73,4 +72,5 @@ public class MeatProductMenu extends JFrame implements ProductMenu{
     public void showComboxes() {
 
     }
+
 }

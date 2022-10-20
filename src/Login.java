@@ -69,6 +69,7 @@ public class Login extends JFrame implements ActionListener {
                         username = str.substring(0, i);
                         passward = str.substring(i + 1);
                         Buyers.put(username, passward);
+                        //Product product = new Product("test", "test");
                     }
                 }
 
@@ -103,6 +104,7 @@ public class Login extends JFrame implements ActionListener {
             try {
                 Facade.getInstance().attachProductToUser();
                 this.setVisible(false);
+                System.out.print(Facade.getInstance().getBuyer_ProductList());
                 person.showMenu();
 
             } catch (FileNotFoundException ex) {

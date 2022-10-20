@@ -19,11 +19,13 @@ public class Buyer extends Person{
         userLabel = new JLabel("Your cart : ");
         userLabel.setBounds(10,70, 80 ,25);
         this.add(userLabel);
-        for(int index = 0; index < productList.size(); index++){
-            Product p = productList.get(index);
-            JLabel item = new JLabel(p.get_name());
-            item.setBounds(10 + (index * 30), 10 , 80, 200);
-            this.add(item);
+        if(!productList.isEmpty()){
+            for(int index = 0; index < productList.size(); index++){
+                Product p = productList.get(index);
+                JLabel item = new JLabel(p.get_name());
+                item.setBounds(10 + (index * 30), 10 , 80, 200);
+                this.add(item);
+            }
         }
         JButton button_Logout = new JButton("Logout");
         button_Logout.setBounds(50,90,60,25);

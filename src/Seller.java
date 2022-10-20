@@ -1,5 +1,6 @@
 import javax.swing.*;
 import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.io.FileNotFoundException;
 import java.util.Map;
 
@@ -28,7 +29,7 @@ public class Seller extends Person {
         }
         JButton button_Logout = new JButton("Logout");
         button_Logout.setBounds(50,90,60,25);
-        button_Logout.addActionListener(this::actionPerformed);
+        button_Logout.addActionListener((ActionListener) this);
         panel.add(button_Logout);
 
         this.setSize(400, 300);
@@ -37,7 +38,7 @@ public class Seller extends Person {
         this.add(panel);
     }
 
-    private void actionPerformed(ActionEvent actionEvent) {
+    private void actionPerformed(ActionEvent actionEvent) throws FileNotFoundException {
         if (actionEvent.getActionCommand().equals("Logout")) {
             this.setVisible(false);
             try {

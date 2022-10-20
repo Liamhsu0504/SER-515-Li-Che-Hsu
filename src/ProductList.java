@@ -10,4 +10,8 @@ public class ProductList extends ArrayList<Product>{
         }
         return null;
     }
+
+    public void accept(NodeVisitor visitor){
+        visitor.visited(this);
+    }
 }
