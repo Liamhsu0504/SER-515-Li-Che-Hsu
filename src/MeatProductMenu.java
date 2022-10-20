@@ -1,5 +1,4 @@
 import javax.swing.*;
-import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.FileNotFoundException;
@@ -15,13 +14,14 @@ public class MeatProductMenu extends JFrame implements ProductMenu, ActionListen
     }
 
     @Override
-    public void showMenu() throws FileNotFoundException {
+    public void showMenu(JPanel panel) throws FileNotFoundException {
+        //JPanel panel = new JPanel();
         productList = Facade.getInstance().getProductList();
         menuBar.setBounds(10, 100, 150, 30);
         setJMenuBar(menuBar);
         menu_meat.setBounds(10,10, 150, 10);
         menuBar.add(menu_meat);
-
+        menu_meat.setText("Choose_Meats");
         ProductIterator iterator = new ProductIterator(productList);
         while(iterator.hasNext()){
             Product p = iterator.Next();
@@ -32,8 +32,12 @@ public class MeatProductMenu extends JFrame implements ProductMenu, ActionListen
         }
         switch_productmenu.setBounds(10,50, 180,20);
         switch_productmenu.addActionListener(this);
-        person.add(menuBar);
-        person.add(switch_productmenu);
+        panel.add(menuBar);
+        menuBar.setVisible(true);
+        switch_productmenu.setVisible(true);
+        panel.add(switch_productmenu);
+        person.add(panel);
+        panel.setLayout(null);
         //menuBar.setVisible(false);
     }
 
@@ -41,7 +45,7 @@ public class MeatProductMenu extends JFrame implements ProductMenu, ActionListen
         try{
             menu_meat.setVisible(false);
             switch_productmenu.setVisible(false);
-            //switch_productmenu.setText("Switch to Meat Menu");
+            person.dispose();
             person.theProductMenu = new ProduceProductMenu(person);
             person.showMenu();
         }catch (FileNotFoundException ex) {

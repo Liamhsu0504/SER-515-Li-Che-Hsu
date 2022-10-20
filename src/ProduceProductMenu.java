@@ -11,7 +11,7 @@ public class ProduceProductMenu extends  JFrame implements ProductMenu{
         this.person = person;
     }
     @Override
-    public void showMenu() throws FileNotFoundException {
+    public void showMenu(JPanel panel) throws FileNotFoundException {
         productList = Facade.getInstance().getProductList();
         JMenuBar menuBar = new JMenuBar();
         menuBar.setBounds(10, 100, 150, 30);
@@ -26,18 +26,21 @@ public class ProduceProductMenu extends  JFrame implements ProductMenu{
                 menu_produce.add(item);
             }
         }
-        switch_productmenu.setBounds(10,50, 80,20);
+        switch_productmenu.setBounds(10,50, 180,20);
         switch_productmenu.addActionListener(this::actionPerformed);
         menu_produce.setVisible(true);
         switch_productmenu.setVisible(true);
-        person.add(menuBar);
-        person.add(switch_productmenu);
+        panel.add(menuBar);
+        panel.add(switch_productmenu);
+        person.add(panel);
+        panel.setLayout(null);
     }
 
     private void actionPerformed(ActionEvent actionEvent) {
         try{
             menu_produce.setVisible(false);
             switch_productmenu.setVisible(false);
+            person.dispose();
             person.theProductMenu = new MeatProductMenu(person);
             //switch_productmenu.setText("Switch to Meat Menu");
             person.showMenu();

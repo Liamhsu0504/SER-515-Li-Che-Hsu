@@ -25,7 +25,6 @@ public abstract class Person extends JFrame {
 
     public abstract void showMenu() throws FileNotFoundException;
 
-    public abstract void test() throws FileNotFoundException;
 
     public void showAddButton() {
 

@@ -1,7 +1,6 @@
 import javax.swing.*;
 
 public class ReminderVisitor extends NodeVisitor {
-    private static Person person;
     @Override
     public void visited(ProductList productList, JPanel panel) {
         ProductIterator productIterator = new ProductIterator(productList);
@@ -12,11 +11,11 @@ public class ReminderVisitor extends NodeVisitor {
         while (productIterator.hasNext()){
             Product p = productIterator.Next();
             JLabel item = new JLabel(p.get_name());
+            item.setBounds(100 + (index * 50), 10 , 80, 25);
             panel.add(item);
-            panel.setBounds(90 + (index * 30), 80 , 80, 200);
+            System.out.print(p.get_name());
             index++;
         }
-
     }
 
     @Override
