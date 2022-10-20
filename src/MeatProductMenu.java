@@ -41,7 +41,7 @@ public class MeatProductMenu extends JFrame implements ProductMenu, ActionListen
         try{
             menu_meat.setVisible(false);
             switch_productmenu.setVisible(false);
-            switch_productmenu.setText("Switch to Meat Menu");
+            //switch_productmenu.setText("Switch to Meat Menu");
             person.theProductMenu = new ProduceProductMenu(person);
             person.showMenu();
         }catch (FileNotFoundException ex) {

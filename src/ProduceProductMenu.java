@@ -39,7 +39,7 @@ public class ProduceProductMenu extends  JFrame implements ProductMenu{
             menu_produce.setVisible(false);
             switch_productmenu.setVisible(false);
             person.theProductMenu = new MeatProductMenu(person);
-            switch_productmenu.setText("Switch to Meat Menu");
+            //switch_productmenu.setText("Switch to Meat Menu");
             person.showMenu();
         }catch (FileNotFoundException ex) {
             ex.printStackTrace();
