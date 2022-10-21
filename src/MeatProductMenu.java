@@ -15,7 +15,6 @@ public class MeatProductMenu extends JFrame implements ProductMenu, ActionListen
 
     @Override
     public void showMenu(JPanel panel) throws FileNotFoundException {
-        //JPanel panel = new JPanel();
         productList = Facade.getInstance().getProductList();
         menuBar.setBounds(10, 100, 150, 30);
         setJMenuBar(menuBar);
@@ -38,7 +37,6 @@ public class MeatProductMenu extends JFrame implements ProductMenu, ActionListen
         panel.add(switch_productmenu);
         person.add(panel);
         panel.setLayout(null);
-        //menuBar.setVisible(false);
     }
 
     public void actionPerformed(ActionEvent e) {

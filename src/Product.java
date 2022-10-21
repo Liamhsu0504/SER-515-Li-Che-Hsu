@@ -1,5 +1,4 @@
 public class Product {
-    public ProductMenu theProductMenu;
     private String Product_name;
     private String Product_type;
 

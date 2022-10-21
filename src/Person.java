@@ -8,16 +8,12 @@ public abstract class Person extends JFrame {
     public ProductMenu theProductMenu;
     private String username;
     private String password;
-    private static ProductList productList;
 
     public Person(String username, String password){
         this.username = username;
         this.password = password;
         this.theProductMenu = new MeatProductMenu(this);
     }
-    /*public void setUserType(int UserType) {
-        this.UserType = UserType;
-    }*/
 
     public String getUsername () {
         return this.username;
