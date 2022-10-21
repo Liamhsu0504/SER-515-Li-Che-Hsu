@@ -42,7 +42,7 @@ public class Facade {
      */
     public void createProductList() throws FileNotFoundException {
         String str;
-        File Product_doc = new File("/Users/liam0504/Desktop/Documents/ASU/SER515/Design Pattern/src/data/ProductInfo.txt");
+        File Product_doc = new File("/Users/liam0504/Desktop/Documents/ASU/SER515/assignDP.lhsu16/src/data/ProductInfo.txt");
         Scanner Product_obj = new Scanner(Product_doc);
         while(Product_obj.hasNext()){
             if(Product_obj.hasNextLine()){
@@ -70,7 +70,7 @@ public class Facade {
         Map<String, String> Buyers = login.getBuyers();
         Map<String, String> Sellers = login.getSellers();
         String str;
-        File UserProduct_doc = new File("/Users/liam0504/Desktop/Documents/ASU/SER515/Design Pattern/src/data/UserProduct.txt");
+        File UserProduct_doc = new File("/Users/liam0504/Desktop/Documents/ASU/SER515/assignDP.lhsu16/src/data/UserProduct.txt");
         Scanner UserProduct_obj = new Scanner(UserProduct_doc);
         while(UserProduct_obj.hasNext()) {
             if (UserProduct_obj.hasNextLine()) {

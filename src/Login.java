@@ -62,7 +62,7 @@ public class Login extends JFrame implements ActionListener {
      * Import users to the system
      */
      private void ImportUser() throws FileNotFoundException {
-        File Buyer_doc = new File("/Users/liam0504/Desktop/Documents/ASU/SER515/Design Pattern/src/data/BuyerInfo.txt");
+        File Buyer_doc = new File("/Users/liam0504/Desktop/Documents/ASU/SER515/assignDP.lhsu16/src/data/BuyerInfo.txt");
         Scanner Buyer_obj = new Scanner(Buyer_doc);
         String str = null;
         String username = null;
@@ -84,7 +84,7 @@ public class Login extends JFrame implements ActionListener {
             }
             else break;
         }
-         File Seller_doc = new File("/Users/liam0504/Desktop/Documents/ASU/SER515/Design Pattern/src/data/SellerInfo.txt");
+         File Seller_doc = new File("/Users/liam0504/Desktop/Documents/ASU/SER515/assignDP.lhsu16/src/data/SellerInfo.txt");
          Scanner Seller_obj = new Scanner(Seller_doc);
          while(Seller_obj.hasNext()){
              if(Seller_obj.hasNextLine()){
