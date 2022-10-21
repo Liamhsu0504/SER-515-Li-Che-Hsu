@@ -1,6 +1,6 @@
 public class ProductIterator implements ListIterator{
     /**
-     * Design Pattern: Iterator
+     * Design Pattern: Iterator Pattern
      * ProductIterator implements ListIterator
      */
     private ProductList productList;

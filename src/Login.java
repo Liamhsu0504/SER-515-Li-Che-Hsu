@@ -59,7 +59,7 @@ public class Login extends JFrame implements ActionListener {
 
     /**
      * ImportUser()
-     *Import users to the system
+     * Import users to the system
      */
      private void ImportUser() throws FileNotFoundException {
         File Buyer_doc = new File("/Users/liam0504/Desktop/Documents/ASU/SER515/Design Pattern/src/data/BuyerInfo.txt");
