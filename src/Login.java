@@ -6,7 +6,10 @@ import java.io.FileNotFoundException;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Scanner;
-
+/**
+ * Design Pattern : Facade Pattern
+ * A Login system
+ */
 public class Login extends JFrame implements ActionListener {
     private Map<String, String> Sellers;
     private Map<String, String> Buyers;
@@ -53,6 +56,11 @@ public class Login extends JFrame implements ActionListener {
         //success.setBounds(10,90, 80, 20);
         //panel.add(success);
     }
+
+    /**
+     * ImportUser()
+     *Import users to the system
+     */
      private void ImportUser() throws FileNotFoundException {
         File Buyer_doc = new File("/Users/liam0504/Desktop/Documents/ASU/SER515/Design Pattern/src/data/BuyerInfo.txt");
         Scanner Buyer_obj = new Scanner(Buyer_doc);
@@ -95,6 +103,10 @@ public class Login extends JFrame implements ActionListener {
              else break;
          }
      }
+
+    /**
+     * when a user click the Login button, the system would display a menu
+     */
     @Override
     public void actionPerformed(ActionEvent e) {
         String user = userText.getText();

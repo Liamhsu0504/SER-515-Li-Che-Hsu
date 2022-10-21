@@ -1,4 +1,7 @@
-public class OfferIlterator implements ListIterator{
+public class OfferIterator implements ListIterator{
+    /**
+     * Design Pattern : Iterator Pattern
+     */
     @Override
     public boolean hasNext() {
         return false;

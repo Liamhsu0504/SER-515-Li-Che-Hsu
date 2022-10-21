@@ -1,6 +1,9 @@
 import javax.swing.*;
 import java.util.ArrayList;
-
+/**
+ * Design Pattern: Iterator Pattern
+ * ProductList is a list of product
+ */
 public class ProductList extends ArrayList<Product>{
 
     public Product get_name(String product_name) {

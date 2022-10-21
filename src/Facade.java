@@ -3,7 +3,9 @@ import java.io.FileNotFoundException;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Scanner;
-
+/**
+ Design Pattern : Facade Pattern
+ */
 public class Facade {
     private static Facade instance;
 
@@ -34,15 +36,10 @@ public class Facade {
         return productList;
     }
 
-    public void addTrading(){}
-
-    public void ViewTrading(){}
-
-    public void decideBidding(){}
-
-    public void remind(){}
-
-
+    /**
+     createProductList()
+     create a product list
+     */
     public void createProductList() throws FileNotFoundException {
         String str;
         File Product_doc = new File("/Users/liam0504/Desktop/Documents/ASU/SER515/Design Pattern/src/data/ProductInfo.txt");
@@ -62,10 +59,13 @@ public class Facade {
         }
     }
 
-    public void selectProduct(){}
-
-    public void ProductionOperation(){}
-
+    /**
+     attachProductYoUser()
+     Call this function after creating the user.
+     Create productList byreading the UserProduct.txt file.
+     Match the product name with theProductList.
+     Attach the matched product object to the new created user: Facade. Person. ProductList
+     */
     public void attachProductToUser() throws FileNotFoundException {
         Map<String, String> Buyers = login.getBuyers();
         Map<String, String> Sellers = login.getSellers();
@@ -101,4 +101,18 @@ public class Facade {
             } else break;
         }
     }
+    /**
+     Function are not implemented
+     */
+    public void addTrading(){}
+
+    public void ViewTrading(){}
+
+    public void decideBidding(){}
+
+    public void remind(){}
+
+    public void selectProduct(){}
+
+    public void ProductionOperation(){}
 }

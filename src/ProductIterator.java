@@ -1,4 +1,8 @@
 public class ProductIterator implements ListIterator{
+    /**
+     * Design Pattern: Iterator
+     * ProductIterator implements ListIterator
+     */
     private ProductList productList;
 
     private int index = 0;

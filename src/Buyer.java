@@ -3,6 +3,11 @@ import java.awt.event.ActionEvent;
 import java.io.FileNotFoundException;
 import java.util.Map;
 
+/**
+ * Design Pattern: Bridge Pattern
+ * Class Buyer extends Class Person
+ */
+
 public class Buyer extends Person{
     ProductList productList;
     public Buyer(String username, String password) {
@@ -16,7 +21,16 @@ public class Buyer extends Person{
             productList_map.put(Username, new ProductList());
         }
         productList = productList_map.get(Username);
+        /**
+         * Design Pattern : Factory Pattern
+         * Show the menu
+         */
         super.theProductMenu.showMenu(panel);
+
+        /**
+         * Design Pattern : Visitor Pattern
+         * Show user what products they actually have
+         */
         ReminderVisitor reminderVisitor = new ReminderVisitor();
         productList.accept(reminderVisitor, panel);
         this.add(panel);

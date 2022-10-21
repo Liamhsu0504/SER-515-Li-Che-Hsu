@@ -2,7 +2,9 @@ import javax.swing.*;
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.List;
-
+/**
+ * This class is the superclass of Buyer and Seller.
+ */
 public abstract class Person extends JFrame {
 
     public ProductMenu theProductMenu;

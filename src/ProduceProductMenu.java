@@ -1,7 +1,9 @@
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.io.FileNotFoundException;
-
+/**
+ * Subclass of ProductMenu
+ */
 public class ProduceProductMenu extends  JFrame implements ProductMenu{
     private static Person person;
     JMenu menu_produce = new JMenu(" Choose_Products");
@@ -18,6 +20,10 @@ public class ProduceProductMenu extends  JFrame implements ProductMenu{
         setJMenuBar(menuBar);
         menu_produce.setBounds(10,10, 150, 10);
         menuBar.add(menu_produce);
+        /**
+         * Design Pattern : Iterator Pattern
+         * Show what products are on a menu
+         */
         ProductIterator iterator = new ProductIterator(productList);
         while(iterator.hasNext()){
             Product p = iterator.Next();

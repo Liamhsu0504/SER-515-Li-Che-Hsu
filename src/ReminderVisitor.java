@@ -1,5 +1,8 @@
 import javax.swing.*;
-
+/**
+ * Design Pattern: Visitor Pattern
+ * A user can know what products they actually have, the products would display on the flame
+ */
 public class ReminderVisitor extends NodeVisitor {
     @Override
     public void visited(ProductList productList, JPanel panel) {

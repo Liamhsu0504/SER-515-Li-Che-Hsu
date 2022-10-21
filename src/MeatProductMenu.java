@@ -2,7 +2,9 @@ import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.FileNotFoundException;
-
+/**
+ * Subclass of ProductMenu
+ */
 public class MeatProductMenu extends JFrame implements ProductMenu, ActionListener {
     private ProductList productList;
     JMenuBar menuBar = new JMenuBar();
@@ -21,6 +23,10 @@ public class MeatProductMenu extends JFrame implements ProductMenu, ActionListen
         menu_meat.setBounds(10,10, 150, 10);
         menuBar.add(menu_meat);
         menu_meat.setText("Choose_Meats");
+        /**
+         * Design Pattern : Iterator Pattern
+         * Show what products are on a menu
+         */
         ProductIterator iterator = new ProductIterator(productList);
         while(iterator.hasNext()){
             Product p = iterator.Next();
@@ -29,6 +35,7 @@ public class MeatProductMenu extends JFrame implements ProductMenu, ActionListen
                 menu_meat.add(item);
             }
         }
+
         switch_productmenu.setBounds(10,50, 180,20);
         switch_productmenu.addActionListener(this);
         panel.add(menuBar);
